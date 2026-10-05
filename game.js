@@ -3413,3 +3413,175 @@ function setLanguageSafe() {
 
 saveGame();
 ```
+/* =========================================================
+   BUTTON CONNECTIONS
+   ========================================================= */
+
+function connectButtons() {
+
+    // Main menu
+    document.getElementById("playButton")
+        ?.addEventListener("click", () => {
+            openLevels();
+        });
+
+    document.getElementById("levelsButton")
+        ?.addEventListener("click", () => {
+            openLevels();
+        });
+
+    document.getElementById("howButton")
+        ?.addEventListener("click", () => {
+            openHowToPlay();
+        });
+
+    document.getElementById("shopButton")
+        ?.addEventListener("click", () => {
+            openShop();
+        });
+
+    document.getElementById("statisticsButton")
+        ?.addEventListener("click", () => {
+            openStatistics();
+        });
+
+    document.getElementById("settingsButton")
+        ?.addEventListener("click", () => {
+            openSettings();
+        });
+
+    document.getElementById("editorButton")
+        ?.addEventListener("click", () => {
+            openEditor();
+        });
+
+
+    // Back buttons
+    document.getElementById("backFromLevels")
+        ?.addEventListener("click", () => {
+            showScreen("menuScreen");
+        });
+
+    document.getElementById("backFromHow")
+        ?.addEventListener("click", () => {
+            showScreen("menuScreen");
+        });
+
+    document.getElementById("backFromShop")
+        ?.addEventListener("click", () => {
+            showScreen("menuScreen");
+        });
+
+    document.getElementById("backFromStatistics")
+        ?.addEventListener("click", () => {
+            showScreen("menuScreen");
+        });
+
+    document.getElementById("backFromSettings")
+        ?.addEventListener("click", () => {
+            showScreen("menuScreen");
+        });
+
+    document.getElementById("backFromEditor")
+        ?.addEventListener("click", () => {
+            showScreen("menuScreen");
+        });
+
+
+    // Game pause
+    document.getElementById("pauseButton")
+        ?.addEventListener("click", () => {
+            pauseGame();
+        });
+
+    document.getElementById("resumeButton")
+        ?.addEventListener("click", () => {
+            resumeGame();
+        });
+
+    document.getElementById("restartButton")
+        ?.addEventListener("click", () => {
+            restartLevel();
+        });
+
+    document.getElementById("levelSelectButton")
+        ?.addEventListener("click", () => {
+            openLevelsFromGame();
+        });
+
+
+    // Fullscreen
+    document.getElementById("fullscreenButton")
+        ?.addEventListener("click", () => {
+            toggleFullscreen();
+        });
+
+
+    // Reset progress
+    document.getElementById("resetButton")
+        ?.addEventListener("click", () => {
+            resetProgress();
+        });
+
+
+    // Editor
+    document.getElementById("saveLevelButton")
+        ?.addEventListener("click", () => {
+            saveCustomLevel();
+        });
+
+    document.getElementById("loadLevelButton")
+        ?.addEventListener("click", () => {
+            loadCustomLevel();
+        });
+
+    document.getElementById("testLevelButton")
+        ?.addEventListener("click", () => {
+            testCustomLevel();
+        });
+
+
+    // Editor tools
+    document.querySelectorAll("[data-tool]")
+        .forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const tool =
+                    button.dataset.tool;
+
+                setEditorTool(tool);
+
+                document
+                    .querySelectorAll("[data-tool]")
+                    .forEach(btn => {
+                        btn.classList.remove("selected");
+                    });
+
+                button.classList.add("selected");
+            });
+
+        });
+
+
+    console.log(
+        "TOPO GAME buttons connected successfully."
+    );
+}
+
+
+/* =========================================================
+   STARTUP
+   ========================================================= */
+
+window.addEventListener("DOMContentLoaded", () => {
+
+    connectButtons();
+
+    renderLevels();
+
+    renderStatistics();
+
+    drawEditor();
+
+});
