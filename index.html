@@ -1,454 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0,
-                   maximum-scale=1.0, user-scalable=no">
-
-    <title>TOPO GAME</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>TOPO GAME</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-<div id="app">
-
-    <!-- ================= MENU ================= -->
-
-    <section id="menuScreen" class="screen active">
-
-        <div class="background">
-            <div class="grid"></div>
-            <div id="particles"></div>
-        </div>
-
-        <div class="logo">
-            <div class="topo">TOPO</div>
-            <div class="game">GAME</div>
-        </div>
-
-        <div class="subtitle">
-            GEOMETRIC RHYTHM ADVENTURE
-        </div>
-
-        <div class="menu">
-
-            <button onclick="startSelectedLevel()">
-                PLAY
-            </button>
-
-            <button onclick="openLevels()">
-                LEVELS
-            </button>
-
-            <button onclick="openHowToPlay()">
-                HOW TO PLAY
-            </button>
-
-            <button onclick="openShop()">
-                SHOP
-            </button>
-
-            <button onclick="openStatistics()">
-                STATISTICS
-            </button>
-
-            <button onclick="openSettings()">
-                SETTINGS
-            </button>
-
-            <button onclick="openEditor()">
-                CREATE LEVEL
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= LEVEL SELECT ================= -->
-
-    <section id="levelsScreen" class="screen">
-
-        <div class="topBar">
-
-            <button onclick="showScreen('menuScreen')">
-                ←
-            </button>
-
-            <h1>LEVELS</h1>
-
-        </div>
-
-        <div id="levelsContainer"
-             class="levelsContainer">
-        </div>
-
-    </section>
-
-
-    <!-- ================= HOW TO PLAY ================= -->
-
-    <section id="howScreen" class="screen">
-
-        <div class="topBar">
-
-            <button onclick="showScreen('menuScreen')">
-                ←
-            </button>
-
-            <h1>HOW TO PLAY</h1>
-
-        </div>
-
-        <div class="infoPanel">
-
-            <h2>CONTROLS</h2>
-
-            <div class="control">
-                <span>SPACE</span>
-                <p>Jump</p>
-            </div>
-
-            <div class="control">
-                <span>W</span>
-                <p>Jump</p>
-            </div>
-
-            <div class="control">
-                <span>LEFT CLICK</span>
-                <p>Jump</p>
-            </div>
-
-            <div class="control">
-                <span>TAP</span>
-                <p>Jump on mobile</p>
-            </div>
-
-            <div class="control">
-                <span>ESC</span>
-                <p>Pause</p>
-            </div>
-
-            <h2>GOAL</h2>
-
-            <p>
-                Reach the end of the level,
-                avoid obstacles and collect coins.
-            </p>
-
-            <h2>PORTALS</h2>
-
-            <p>
-                Portals can change gravity,
-                speed or teleport you.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= SHOP ================= -->
-
-    <section id="shopScreen" class="screen">
-
-        <div class="topBar">
-
-            <button onclick="showScreen('menuScreen')">
-                ←
-            </button>
-
-            <h1>SHOP</h1>
-
-            <div class="shopCoins">
-                ◆ <span id="shopCoins">0</span>
-            </div>
-
-        </div>
-
-        <div id="shopContainer"
-             class="shopContainer">
-        </div>
-
-    </section>
-
-
-    <!-- ================= STATISTICS ================= -->
-
-    <section id="statisticsScreen" class="screen">
-
-        <div class="topBar">
-
-            <button onclick="showScreen('menuScreen')">
-                ←
-            </button>
-
-            <h1>STATISTICS</h1>
-
-        </div>
-
-        <div id="statisticsContainer"
-             class="statisticsContainer">
-        </div>
-
-    </section>
-
-
-    <!-- ================= SETTINGS ================= -->
-
-    <section id="settingsScreen" class="screen">
-
-        <div class="topBar">
-
-            <button onclick="showScreen('menuScreen')">
-                ←
-            </button>
-
-            <h1>SETTINGS</h1>
-
-        </div>
-
-        <div class="settings">
-
-            <label>
-                Music
-                <input id="musicEnabled"
-                       type="checkbox"
-                       checked>
-            </label>
-
-            <label>
-                Sound Effects
-                <input id="soundEnabled"
-                       type="checkbox"
-                       checked>
-            </label>
-
-            <label>
-                Volume
-
-                <input id="volume"
-                       type="range"
-                       min="0"
-                       max="1"
-                       step="0.05"
-                       value="0.5">
-            </label>
-
-            <label>
-                Language
-
-                <select id="language">
-                    <option value="en">
-                        English
-                    </option>
-
-                    <option value="he">
-                        עברית
-                    </option>
-
-                    <option value="ar">
-                        العربية
-                    </option>
-
-                    <option value="es">
-                        Español
-                    </option>
-
-                    <option value="fr">
-                        Français
-                    </option>
-                </select>
-            </label>
-
-            <button onclick="toggleFullscreen()">
-                FULLSCREEN
-            </button>
-
-            <button class="danger"
-                    onclick="resetProgress()">
-
-                RESET ALL PROGRESS
-
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= EDITOR ================= -->
-
-    <section id="editorScreen" class="screen">
-
-        <div class="topBar">
-
-            <button onclick="showScreen('menuScreen')">
-                ←
-            </button>
-
-            <h1>CREATE LEVEL</h1>
-
-        </div>
-
-        <div class="editor">
-
-            <div class="editorTools">
-
-                <button onclick="setEditorTool('block')">
-                    BLOCK
-                </button>
-
-                <button onclick="setEditorTool('spike')">
-                    SPIKE
-                </button>
-
-                <button onclick="setEditorTool('coin')">
-                    COIN
-                </button>
-
-                <button onclick="setEditorTool('portal')">
-                    PORTAL
-                </button>
-
-                <button onclick="setEditorTool('eraser')">
-                    ERASE
-                </button>
-
-            </div>
-
-            <canvas id="editorCanvas"
-                    width="1200"
-                    height="600">
-            </canvas>
-
-            <div class="editorActions">
-
-                <button onclick="saveCustomLevel()">
-                    SAVE
-                </button>
-
-                <button onclick="testCustomLevel()">
-                    TEST
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= GAME ================= -->
-
-    <section id="gameScreen"
-             class="screen gameScreen">
-
-        <canvas id="gameCanvas"></canvas>
-
-        <div id="gameHUD">
-
-            <div class="hudTop">
-
-                <div>
-                    LEVEL
-                    <span id="hudLevel">
-                        1
-                    </span>
-                </div>
-
-                <div>
-                    <span id="hudPercent">
-                        0
-                    </span>%
-                </div>
-
-            </div>
-
-            <div class="progress">
-                <div id="progressBar"></div>
-            </div>
-
-            <div class="hudBottom">
-
-                <div>
-                    ◆
-                    <span id="hudCoins">
-                        0
-                    </span>
-                </div>
-
-                <button onclick="pauseGame()">
-                    II
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= PAUSE ================= -->
-
-    <div id="pauseOverlay"
-         class="overlay">
-
-        <div class="dialog">
-
-            <h1>PAUSED</h1>
-
-            <button onclick="resumeGame()">
-                RESUME
-            </button>
-
-            <button onclick="restartLevel()">
-                RESTART
-            </button>
-
-            <button onclick="openLevelsFromGame()">
-                LEVEL SELECT
-            </button>
-
-            <button onclick="showScreen('menuScreen')">
-                MAIN MENU
-            </button>
-
-        </div>
-
+  <div id="app">
+    <div id="menu" class="screen">
+      <div class="bg-grid"></div><div id="particles"></div>
+      <div class="logo"><span>TOPO</span><b>GAME</b></div>
+      <p id="tagline">GEOMETRIC RHYTHM ADVENTURE</p>
+      <div class="menu-buttons">
+        <button data-action="play">PLAY</button>
+        <button data-action="levels">LEVELS</button>
+        <button data-action="how">HOW TO PLAY</button>
+        <button data-action="shop">SHOP</button>
+        <button data-action="settings">SETTINGS</button>
+        <button data-action="stats">STATISTICS</button>
+        <button data-action="editor">CREATE LEVEL</button>
+      </div>
     </div>
 
-
-    <!-- ================= RESULT ================= -->
-
-    <div id="resultOverlay"
-         class="overlay">
-
-        <div class="dialog">
-
-            <h1 id="resultTitle">
-                LEVEL COMPLETE!
-            </h1>
-
-            <div id="resultStats"></div>
-
-            <div id="resultButtons"></div>
-
-        </div>
-
+    <div id="levels" class="screen hidden">
+      <header><button class="back" data-action="menu">←</button><h1 id="levelsTitle">LEVELS</h1></header>
+      <div id="levelGrid"></div>
     </div>
 
+    <div id="how" class="screen hidden">
+      <header><button class="back" data-action="menu">←</button><h1>HOW TO PLAY</h1></header>
+      <div class="panel help">
+        <div class="help-item"><kbd>SPACE</kbd><kbd>W</kbd><kbd>CLICK</kbd><kbd>TAP</kbd><p>Jump</p></div>
+        <div class="help-item"><kbd>ESC</kbd><p>Pause</p></div>
+        <div class="help-item"><strong>◆</strong><p>Collect coins to increase your score.</p></div>
+        <div class="help-item"><strong>PORTALS</strong><p>Change gravity, speed or position.</p></div>
+        <p>Reach the end without hitting obstacles. Timing is everything.</p>
+      </div>
+    </div>
 
-</div>
+    <div id="shop" class="screen hidden">
+      <header><button class="back" data-action="menu">←</button><h1>SHOP</h1><div class="coin-total">◆ <span id="shopCoins">0</span></div></header>
+      <div id="shopGrid"></div>
+    </div>
 
-<script src="levels.js"></script>
-<script src="audio.js"></script>
-<script src="localization.js"></script>
-<script src="shop.js"></script>
-<script src="game.js"></script>
+    <div id="settings" class="screen hidden">
+      <header><button class="back" data-action="menu">←</button><h1>SETTINGS</h1></header>
+      <div class="panel settings">
+        <label>Music <input id="musicToggle" type="checkbox"></label>
+        <label>Sound Effects <input id="sfxToggle" type="checkbox"></label>
+        <label>Music Volume <input id="volume" type="range" min="0" max="1" step=".05"></label>
+        <label>Graphics
+          <select id="graphics"><option>Low</option><option>Medium</option><option>High</option></select>
+        </label>
+        <label>Controls
+          <select id="controls"><option>Keyboard</option><option>Mouse</option><option>Touch</option></select>
+        </label>
+        <label>Fullscreen <button id="fullscreen">TOGGLE</button></label>
+        <label>Language
+          <select id="language"><option value="en">English</option><option value="he">עברית</option><option value="ar">العربية</option><option value="es">Español</option><option value="fr">Français</option></select>
+        </label>
+        <button class="danger" id="reset">RESET ALL PROGRESS</button>
+      </div>
+    </div>
 
+    <div id="stats" class="screen hidden">
+      <header><button class="back" data-action="menu">←</button><h1>STATISTICS</h1></header>
+      <div id="statsGrid"></div>
+    </div>
+
+    <div id="editor" class="screen hidden">
+      <header><button class="back" data-action="menu">←</button><h1>CREATE LEVEL</h1></header>
+      <div class="panel editor-panel">
+        <p>Simple local level editor. Place objects on a grid, then save and test.</p>
+        <div class="editor-tools">
+          <button data-tool="block">BLOCK</button><button data-tool="spike">SPIKE</button>
+          <button data-tool="coin">COIN</button><button data-tool="portal">PORTAL</button>
+          <button data-tool="pad">PAD</button><button data-tool="erase">ERASE</button>
+        </div>
+        <canvas id="editorCanvas" width="900" height="360"></canvas>
+        <div><button id="saveCustom">SAVE LEVEL</button><button id="testCustom">TEST LEVEL</button></div>
+      </div>
+    </div>
+
+    <div id="game" class="screen hidden">
+      <canvas id="gameCanvas"></canvas>
+      <div id="hud">
+        <div><b id="levelHud">LEVEL 1</b><span id="percent">0%</span></div>
+        <div class="progress"><i id="progressBar"></i></div>
+        <div class="hud-bottom"><span>◆ <b id="coinsHud">0</b></span><span>ATTEMPTS <b id="attemptsHud">0</b></span><button id="pauseBtn">Ⅱ</button></div>
+      </div>
+      <div id="countdown" class="overlay-text hidden"></div>
+    </div>
+
+    <div id="modal" class="modal hidden">
+      <div class="modal-card">
+        <h2 id="modalTitle"></h2><div id="modalBody"></div>
+        <div id="modalButtons"></div>
+      </div>
+    </div>
+  </div>
+  <script src="levels.js"></script>
+  <script src="audio.js"></script>
+  <script src="localization.js"></script>
+  <script src="shop.js"></script>
+  <script src="game.js"></script>
 </body>
 </html>
